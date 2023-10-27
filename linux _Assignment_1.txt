@@ -1,0 +1,694 @@
+1) Check if a given number is even or odd.
+
+read -p"Enter the number " a 
+if [ $((a%2)) -eq 0 ]
+then
+echo "number is even "
+else 
+echo "Number is odd"
+f
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+2)Find the factorial of a given number.
+read -p"Enter the number" a
+fact=1
+for i in $(seq 1 $a); #seq keyword is used will give sequence from 1 to that number
+do
+fact=$(($fact*$i))
+done
+echo "$fact"
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+3)Determine the largest among three numbers.
+a=20
+b=30
+c=45
+if [[ $a -gt $b ]];
+    then
+    if [[ $a -gt $c ]];
+        then
+        echo "a is greater"
+    fi
+elif [[ $b -gt $c ]];
+    then
+    echo "b is greater "
+else
+    echo "c is greater"
+fi
+
+# a=20
+# b=30
+# c=45
+
+# if [ $a -gt $b ]; then
+#     if [ $b -gt $c ]; then
+#         echo "a is greater than b, and b is greater than c"
+#     fi
+# elif [ $b -gt $c ]; then
+#     echo "b is greater than c"
+# else
+#     echo "c is greater than a and b"
+# fi
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+4)
+read -p "Enter a string: " input_string
+reversed_string=$(echo "$input_string" | rev)
+
+if [ "$input_string" = "$reversed_string" ]; then
+    echo "Palindrome"
+else
+    echo "Not a palindrome"
+fi
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+5)
+#!/bin/bash
+
+# Function to generate the Fibonacci sequence
+fibonacci() {
+    n=$1
+    a=0
+    b=1
+    for ((i = 0; i < n; i++)); do
+        echo -n "$a "
+        temp=$a
+        a=$b
+        b=$((temp + b))
+    done
+    echo
+}
+
+# Input: Number of terms
+read -p "Enter the number of terms for the Fibonacci sequence: " num_terms
+
+if [[ $num_terms -le 0 ]]; then
+    echo "Please enter a positive integer."
+else
+    echo "Fibonacci sequence up to $num_terms terms:"
+    fibonacci "$num_terms"
+fi
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+6)
+#!/bin/bash
+
+# Input: Number to check for primality
+read -p "Enter a number: " number
+
+# Function to check if a number is prime
+is_prime() {
+    n=$1
+    if [ $n -le 1 ]; then
+        echo "Not prime"
+    elif [ $n -le 3 ]; then
+        echo "Prime"
+    elif [ $((n % 2)) -eq 0 ] || [ $((n % 3)) -eq 0 ]; then
+        echo "Not prime"
+    else
+        i=5
+        while [ $((i * i)) -le $n ]; do
+            if [ $((n % i)) -eq 0 ] || [ $((n % (i + 2))) -eq 0 ]; then
+                echo "Not prime"
+                return
+            fi
+            i=$((i + 6))
+        done
+        echo "Prime"
+    fi
+}
+
+if [[ $number =~ ^[0-9]+$ ]]; then
+    result=$(is_prime "$number")
+    echo "$number is $result."
+else
+    echo "Please enter a valid positive integer."
+fi
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+7)
+
+#!/bin/bash
+
+# Function to generate the multiplication table
+multiplication_table() {
+    number=$1
+    for ((i = 1; i <= 10; i++)); do
+        result=$((number * i))
+        echo "$number x $i = $result"
+    done
+}
+
+# Input: Number for which you want the multiplication table
+read -p "Enter a number: " input_number
+
+if [[ $input_number =~ ^[0-9]+$ ]]; then
+    echo "Multiplication table for $input_number:"
+    multiplication_table "$input_number"
+else
+    echo "Please enter a valid number."
+fi
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q8)
+#!/bin/bash
+
+# Input: Upper limit N
+read -p "Enter a positive integer N: " N
+
+# Initialize the sum
+sum=0
+
+# Loop through numbers from 1 to N
+for ((i = 1; i <= N; i++)); do
+    # Check if the number is even
+    if ((i % 2 == 0)); then
+        # Add the even number to the sum
+        sum=$((sum + i))
+    fi
+done
+
+echo "The sum of even numbers between 1 and $N is: $sum"
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+9)
+#!/bin/bash
+
+# Input: Upper limit N
+read -p "Enter a positive integer N: " N
+
+# Check if N is a positive integer
+if [[ $N =~ ^[1-9][0-9]*$ ]]; then
+    # Use the formula to calculate the sum
+    sum=$((N * (N + 1) / 2))
+    echo "The sum of natural numbers from 1 to $N is: $sum"
+else
+    echo "Please enter a valid positive integer."
+fi
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+10)Reverse a given number.
+#!/bin/bash
+
+# Input: Number to reverse
+read -p "Enter a number to reverse: " number
+
+# Check if the input is a positive integer
+if [[ $number =~ ^[1-9][0-9]*$ ]]; then
+    reversed=0
+
+    # Reverse the number
+    while [ $number -gt 0 ]; do
+        remainder=$((number % 10))
+        reversed=$((reversed * 10 + remainder))
+        number=$((number / 10))
+    done
+
+    echo "Reversed number: $reversed"
+else
+    echo "Please enter a valid positive integer."
+fi
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+11)Check if a file exists in a specified directory.
+#!/bin/bash
+
+directory="/path/to/your/directory"
+filename="your_file.txt"
+
+file_path="$directory/$filename"
+
+if [ -e "$file_path" ]; then
+  echo "The file '$filename' exists in the directory."
+else
+  echo "The file '$filename' does not exist in the directory."
+fi
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+12)Calculate the factorial of a number using a while loop.
+fact=1
+a=1
+read b
+while [ $a -lt $b ]
+do
+fact=$(($fact*$a))
+a=$(($a+1))
+done
+echo "$fact"
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+13)Find the sum of all digits in a number.
+echo "Enter a number:"
+read number
+sum=0
+
+while [[ $number -gt 0 ]]
+do
+    digit=$((number % 10))  
+    sum=$((sum + digit))   
+    number=$((number / 10))
+done
+echo "The sum of all digits is: $sum"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+14)Create a menu-based script using a case statement for different
+
+while true; do
+    clear # Clear the screen
+
+    # Display the menu options
+    echo "Menu Options:"
+    echo "1. Option 1"
+    echo "2. Option 2"
+    echo "3. Option 3"
+    echo "4. Quit"
+
+    # Prompt the user for their choice
+    read -p "Enter your choice (1-4): " choice
+
+    # Use a case statement to perform actions based on the user's choice
+    case $choice in
+        1)
+            echo "You selected Option 1"
+            # Add your code for Option 1 here
+            ;;
+        2)
+            echo "You selected Option 2"
+            # Add your code for Option 2 here
+            ;;
+        3)
+            echo "You selected Option 3"
+            # Add your code for Option 3 here
+            ;;
+        4)
+            echo "Goodbye!"
+            exit 0
+            ;;
+        *)
+            echo "Invalid choice. Please enter a number between 1 and 4."
+            ;;
+    esac
+
+    # Pause to let the user read the output before clearing the screen
+    read -p "Press Enter to continue..."
+done
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+15)Generate a random number and have the user guess it.
+#!/bin/bash
+
+# Generate a random number between 1 and 100
+random_number=$((1 + RANDOM % 100))
+
+echo "Guess the random number between 1 and 100."
+
+while true; do
+    read -p "Enter your guess: " user_guess
+
+    if [[ $user_guess -eq $random_number ]]; then
+        echo "Congratulations! You guessed the correct number: $random_number"
+        break
+    elif [[ $user_guess -lt $random_number ]]; then
+        echo "Try a higher number."
+    else
+        echo "Try a lower number."
+    fi
+done
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+16)
+#!/bin/bash
+
+# Initialize variables for sum and count
+sum=0
+count=0
+
+echo "Enter a list of numbers (separated by spaces) and press Enter:"
+read input
+
+# Use a for loop to iterate through the numbers
+for number in $input; do
+    sum=$((sum + number))
+    count=$((count + 1))
+done
+
+# Calculate the average
+if [ $count -eq 0 ]; then
+    average=0
+else
+    average=$(echo "scale=2; $sum / $count" | bc)
+fi
+
+# Display the sum and average
+echo "Sum of the numbers: $sum"
+echo "Average of the numbers: $average"
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+17)
+#!/bin/bash
+
+echo "Enter the base number:"
+read base
+
+echo "Enter the exponent:"
+read exponent
+
+result=1
+
+for ((i = 1; i <= exponent; i++)); do
+    result=$((result * base))
+done
+
+echo "Result: $base^$exponent = $result"
+
+18)#!/bin/bash
+
+echo "Enter a year:"
+read year
+
+if [ $((year % 4)) -eq 0 ]; then
+    if [ $((year % 100)) -ne 0 ] || [ $((year % 400)) -eq 0 ]; then
+        echo "$year is a leap year."
+    else
+        echo "$year is not a leap year."
+    fi
+else
+    echo "$year is not a leap year."
+fi
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+18>
+eap=$(date +"%Y")
+
+echo taking year as $leap
+
+if [ `expr $leap % 400` -eq 0 ]
+
+then
+
+echo leap year
+
+elif [ `expr $leap % 100` -eq 0 ]
+
+then
+
+echo not a leap year
+
+elif [ `expr $leap % 4` -eq 0 ]
+
+then
+
+echo leap year
+
+else
+
+echo not a leap year
+
+fi
+........................................................................................................................................................................................
+19>
+
+egex="^[a-z0-9!#\$%&'+/=?^_\`{|}~-]+(\.[a-z0-9!#$%&'+/=?^_\`{|}~-]+)@([a-z0-9]([a-z0-9-][a-z0-9])?\.)+[a-z0-9]([a-z0-9-]*[a-z0-9])?\$"
+
+
+
+i="test@terra.es"
+
+if [[ $i =~ $regex ]] ; then
+
+    echo "OK"
+
+else
+
+    echo "not OK"
+
+fi
+...........................................................................................................................................................................................
+20># !/bin/bash
+
+# Take user Input
+echo "Enter Two numbers : "
+read a
+read b
+
+# Input type of operation
+echo "Enter Choice :"
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+read ch
+
+# Switch Case to perform
+# calculator operations
+case $ch in
+1)res=`echo $a + $b | bc`
+;;
+2)res=`echo $a - $b | bc`
+;;
+3)res=`echo $a \* $b | bc`
+;;
+4)res=`echo "scale=2; $a / $b" | bc`
+;;
+esac
+echo "Result : $res"
+
+.............................................................................................................................................................................................
+21>
+#!/bin/bash
+FILE="$1"
+ 
+[ $# -eq 0 ] && exit 1
+ 
+if [ -w "$FILE" ] 
+then
+   echo "Write permission is granted on $FILE"
+else
+   echo "Write permission is NOT granted on $FILE"
+fi
+
+............................................................................................................................................................................................
+22>
+#!/bin/bash
+
+
+
+array=(7 7 6 2 1)
+
+
+
+if [ "${#array[@]}" -lt 2 ]
+
+then
+
+  echo Incoming array is not large enough >&2
+
+  exit 1
+
+fi
+
+largest=${array[0]}
+
+secondGreatest='unset'
+
+
+
+for((i=1; i < ${#array[@]}; i++))
+
+do
+
+  if [[ ${array[i]} > $largest ]]
+
+  then
+
+    secondGreatest=$largest
+
+    largest=${array[i]}
+
+  elif (( ${array[i]} != $largest )) && { [[ "$secondGreatest" = "unset" ]] || [[ ${array[i]} > $secondGreatest ]]; }
+
+  then
+
+    secondGreatest=${array[i]}
+
+  fi
+
+done
+
+
+
+echo "secondGreatest = $secondGreatest"
+
+........................................................................................................................................................................................
+23>#!/usr/bin/bash
+
+# path to the file
+file_path="/home/amninder/Desktop/demo.txt"
+
+# using wc command to count number of lines
+number_of_lines=`wc --lines < $file_path`
+
+# using wc command to count number of words
+number_of_words=`wc --word < $file_path`
+
+# Displaying number of lines and number of words
+echo "Number of lines: $number_of_lines"
+echo "Number of words: $number_of_words"
+
+..........................................................................................................................................................................................
+24>
+#!/bin/bash
+echo "Enter a limit"
+read limit
+echo "prime numbers upto $limit are :"
+echo "1"
+i=2
+while [ $i -le $limit ]
+do
+    flag=1
+    j=2    
+    while [ $j -lt $i ]
+    do
+         rem=$(( $i % $j ))
+        if [ $rem -eq 0 ]
+        then
+          flag=0
+          break
+        fi
+    j=$(( $j+1 ))
+    done
+    if [ $flag -eq 1 ]
+    then
+       echo "$i"
+    fi
+i=$(( $i+1 ))
+done
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+25>
+#!/bin/bash
+
+array1=(20,30,40,50)
+array2=(10,20,30,80,100,110,40)
+
+IFS=,
+for i in $array1 $array2;
+{ ((++tmp[i]));}
+for i in ${!tmp[*]};
+{ [ ${tmp[i]} -gt 1 ] && array3+=($i);}
+echo ${array3[*]}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+26>
+.read -p "Enter a decimal number: " decimal
+binary=""
+while [ $decimal -gt 0 ]; do
+  remainder=$((decimal % 2))
+  binary="$remainder$binary"
+  decimal=$((decimal / 2))
+done
+
+echo "Binary representation: $binary"
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+27>
+#!/bin/bash
+
+echo "Choose a shape:"
+echo "1. Circle"
+echo "2. Triangle"
+echo "3. Rectangle"
+read -p "Enter your choice (1/2/3): " choice
+
+if [ "$choice" -eq 1 ]; then
+  read -p "Enter the radius of the circle: " radius
+  area=$(echo "3.14159 * $radius * $radius" | bc)
+  echo "The area of the circle is $area"
+elif [ "$choice" -eq 2 ]; then
+  read -p "Enter the base of the triangle: " base
+  read -p "Enter the height of the triangle: " height
+  area=$(echo "0.5 * $base * $height" | bc)
+  echo "The area of the triangle is $area"
+elif [ "$choice" -eq 3 ]; then
+  read -p "Enter the length of the rectangle: " length
+  read -p "Enter the width of the rectangle: " width
+  area=$(echo "$length * $width" | bc)
+  echo "The area of the rectangle is $area"
+else
+  echo "Invalid choice. Please select 1, 2, or 3."
+fi
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+28>
+#!/bin/bash
+#Script to find armstrong number till 500, you can change it 
+i=1
+while((i<=500))
+do
+c=$i
+d=$i
+b=0
+a=0
+#checking each number
+while((c>0))
+do
+#separating each digit
+a=$((c%10))
+#finding cube of each digit and adding them
+b=$((b + a*a*a))
+c=$((c/10))
+done
+if((b==d)); then
+echo "$i"
+fi
+i=$((i+1))
+done
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+29>                                                            
+#! /bin/bash
+
+# path to the file
+filepath="C:\Users\hp\Desktop\vita\os\shell_assigment.pdf"
+
+# extracting file name from full file path
+name="${filepath##*/}"
+
+# extracting the size of a file
+size=$(ls -lah $filepath |cut -d ' ' -f 5)
+
+#displaying file name and file size
+echo "FILE SIZE OF $name IS $size"
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+30>
+!/bin/bash
+
+# Initialize account balance
+balance=1000
+while true; do
+  echo "1. Check Balance"
+  echo "2. Make a Deposit"
+  echo "3. Make a Withdrawal"
+  echo "4. Exit"
+  read -p "Please select an option (1/2/3/4): " choice
+
+  case $choice in
+    1)
+      echo "Your balance is $balance"
+      ;;
+    2)
+      read -p "Enter the amount to deposit: " deposit
+      if [ "$deposit" -gt 0 ]; then
+        balance=$((balance + deposit))
+        echo "$deposit has been deposited. Your new balance is $balance."
+      else
+        echo "Invalid deposit amount. Please enter a positive value."
+      fi
+ ;;
+    3)
+      read -p "Enter the amount to withdraw: " withdrawal
+      if [ "$withdrawal" -gt 0 ] && [ "$withdrawal" -le "$balance" ]; then
+        balance=$((balance - withdrawal))
+        echo "$withdrawal has been withdrawn. Your new balance is $balance."
+      elif [ "$withdrawal" -le 0 ]; then
+        echo "Invalid withdrawal amount. Please enter a positive value."
+      else
+        echo "Insufficient funds. Your balance is $balance."
+      fi
+      ;;
+    4)
+      echo "Thank you for using the Simple ATM Machine. Goodbye!"
+      exit 0
+      ;;
+    *)
+      echo "Invalid option. Please select a valid option (1/2/3/4)."
+      ;;
+  esac
+done
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
