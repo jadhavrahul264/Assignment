@@ -1,0 +1,386 @@
+Name_Rahul Ratilal Jadhav
+PRN_NO: 230944520063
+
+
+
+
+
+//1)create a class "Shape" with 2 attributes, "width" and "height". Make sure one can not access these attributes directly.
+//provide accessor methods on these attributes and allow them to call from outside of your class.
+
+
+package Day1;
+import java.util.*;
+
+class shape
+{
+	private int w,h;
+	
+	public int getw()
+	{
+		return w;
+		
+	}
+	
+	public void setw(int w)
+	{
+		this.w=w;
+		
+	}
+	public int geth()
+	{
+		return h;
+		
+	}
+	public void seth(int h)
+	{
+		this.h=h;
+		
+	}
+
+
+  }
+
+
+
+public class task_1 {
+
+	public static void main(String[] args) {
+		
+		shape s1 = new shape();
+		s1.setw(50);
+		s1.seth(20);
+		System.out.println(s1.getw());
+		System.out.println(s1.geth());
+		
+
+	}
+
+}
+
+
+
+
+
+//2) Define a class "MyClass" and make sure clients can instantiate it , 
+//a) without any argument
+//b) with one int argument
+//c) with two int arguments
+
+package Day1;
+import java.util.*;
+class Myclass
+{
+	Myclass()
+	{
+		System.out.println("Default constructor calling");
+		
+	}
+	Myclass(int k)
+	{
+		System.out.println("Inside one Paramerized constructor calling: "+k);
+		
+	}
+	Myclass(int k,int n)
+	{
+		System.out.println("Inside two Paramerized constructor calling:  "+k+" "+n);
+		
+	}
+	
+	
+}
+
+
+
+public class task_1 {
+
+	public static void main(String[] args) {
+		Myclass m1=new Myclass();
+		Myclass m2 = new Myclass(20);
+		Myclass m3 = new Myclass(20,30);
+		
+	}
+}	
+
+
+
+
+
+//3) Define a class "Emp" with private static member "int cnt".
+//How will u make sure that outsiders can read the value of cnt ?
+
+
+package Day1;
+import java.util.*;
+
+class emp
+{
+	private static int cnt=10;
+
+	public static int getCnt() {
+		return cnt;
+	}
+		
+}
+
+
+public class task_1 {
+
+	public static void main(String[] args) {
+		System.out.println(emp.getCnt());
+	
+	}
+		
+}
+
+
+
+
+/*
+4) Define a class "DemoOb". 
+create an instance of it.
+now create a reference and assign the reference created in the above statement.
+	Discuss what happens?
+Now since u have 2 references, take one of the reference and assign a new instance of the class.
+	Discuss what happens?
+(For ur discussion, write necessary comments in the program)
+*/
+
+
+package Day1;
+import java.util.*;
+
+class Demoob
+{
+	private int num;
+	Demoob()
+	{
+		System.out.println("inside the default");
+	}
+	
+	public int getNum()
+	{
+		return num;
+	}
+	
+	public void setNum(int num )
+	{
+		this.num = num;
+		
+	}
+}
+
+		
+
+
+public class task_1 {
+
+	public static void main(String[] args) {
+		Demoob s1 = new Demoob();//creation of new object and giving reference to obj1
+		
+		Demoob j2=s1;//creating a reference which is not referencing to anyone
+		
+		
+		
+		
+		s1 = new Demoob();//creating new object and assigning to obj1
+		
+		
+	}
+		
+	}
+		
+
+	
+
+
+/*
+5) Define 3 classes A , B and C
+in all these classes create static and non static variables as well as methods.
+	Now Define a class "Demo" ,in which define "main" function. From this main function try to access all the members of A ,B  and C.
+*/
+
+
+package Day1;
+import java.util.*;
+class A
+{
+	private int num;
+	private static int num1;
+	
+	public int getNum()
+	{
+		return num;
+	}
+
+	public void setNum(int num)
+	{
+		this.num=num;
+	}
+	public static void setNum1(int num1) {
+		A.num1= num1;
+		
+	}
+	public static int getNum1()
+	{
+		return A.num1;
+		
+	}
+}
+	class B
+	{
+		private int num;
+		public static int num1;
+		
+		public int getNum()
+		{
+			return num;
+			
+		}
+		public void setNum(int num) {
+			this.num=num;
+		}
+		
+	}
+	class c
+	{
+		private int num;
+		public static int num1;
+		
+		public int getNum() {
+			return num;
+			
+		}
+		public void setNum(int num)
+		{
+			this.num=num;
+		}
+	}
+		
+
+
+public class task_1 {
+
+	public static void main(String[] args) 
+	{
+		A obj1 = new A();
+		obj1.setNum(100);
+		System.out.println(obj1.getNum());
+		
+		B obj2 = new B();
+		obj2.setNum(100);
+		System.out.println(obj2.getNum());
+		
+		c obj3 = new c();
+		obj3.setNum(100);
+		System.out.println(obj3.getNum());
+		
+		A.setNum1(100);
+		B.num1=100;
+		c.num1=100;
+		
+		System.out.println(A.getNum1());
+		System.out.println(B.num1);
+		System.out.println(c.num1);
+		
+	}
+}
+	
+
+
+
+//6) define static initializers in the above A,B and C classes and check the order of their execution.
+
+
+
+package Day1;
+import java.util.*;
+class A
+{
+	private int num;
+	private static int num1;
+	
+	public int getNum()
+	{
+		return num;
+	}
+
+	public void setNum(int num)
+	{
+		this.num=num;
+	}
+	public static void setNum1(int num1) {
+		A.num1= num1;
+		
+	}
+	public static int getNum1()
+	{
+		return A.num1;
+		
+	}
+}
+	class B
+	{
+		private int num;
+		public static int num1;
+		
+		public int getNum()
+		{
+			return num;
+			
+		}
+		public void setNum(int num) {
+			this.num=num;
+		}
+		
+	}
+	class c
+	{
+		private int num;
+		public static int num1;
+		
+		public int getNum() {
+			return num;
+			
+		}
+		public void setNum(int num)
+		{
+			this.num=num;
+		}
+	}
+		
+
+
+public class task_1 {
+
+	public static void main(String[] args) 
+	{
+		A obj1 = new A();
+		obj1.setNum(100);
+		System.out.println(obj1.getNum());
+		
+		B obj2 = new B();
+		obj2.setNum(100);
+		System.out.println(obj2.getNum());
+		
+		c obj3 = new c();
+		obj3.setNum(100);
+		System.out.println(obj3.getNum());
+		
+		A.setNum1(100);
+		B.num1=100;
+		c.num1=100;
+		
+		System.out.println(A.getNum1());
+		System.out.println(B.num1);
+		System.out.println(c.num1);
+		
+	}
+	static
+	{
+		System.out.println("inside main");
+	}
+}
+		
+	
+

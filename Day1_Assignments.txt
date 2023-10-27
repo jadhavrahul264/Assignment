@@ -1,0 +1,375 @@
+Name_Rahul Ratilal Jadhav
+PRN_NO_230944520063
+PG_DAC
+
+Some of Arithmatic operator Assignment:-
+------------------------------------------------------------------------------------------------------------------
+/*
+ 1) accept two numbers and add them.
+2) accept two numbers and subtract them.
+3) accept two numbers and multiply them.
+4) accept two numbers and devide them.
+5) accept two numbers and check whether first number is greater or second number is greater or they are equal.
+6) accept a number and check whether it is divisible by 3 or not.
+
+ */
+
+package workspace;
+import java.util.*;
+public class ass_arithmetic {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter First Number");
+		int a=sc.nextInt();
+		
+		System.out.println("Enter Second Number");
+		int b=sc.nextInt();
+		
+		int add=a+b;
+		System.out.println("Addition "+add);
+		
+		int sub=a-b;
+		System.out.println("Substraction "+sub);
+		
+		int multi=a*b;
+		System.out.println("Multiplication "+multi);
+		
+		
+		int div=a/b;
+		System.out.println("Division "+div);
+		
+		if(a==b)
+    	System.out.println("equal Numbers");
+		else if(a>b)
+	    System.out.println("first is greater"+a);
+	    
+	    else
+	    System.out.println("Second is greater"+b);
+		
+		
+		if(a%3==0)
+			System.out.println("Number is divisible by 3");
+		
+	}
+
+}
+
+
+control Flow Assignment:-
+-------------------------------------------------------------------------------------------------------------------------------------
+
+//1)	display a table of a particular number  -
+package workspace;
+import java.util.*;
+public class ass_1 {
+
+	public static void main(String[] args) {
+                 Scanner sc=new Scanner(System.in);
+			int sum=0;
+			System.out.print("Enter a number");
+			int a=sc.nextInt();
+			for(int i=1;i<=10;i++)
+			{
+				sum=i*a;
+				System.out.println(a+"*"+i+"="+sum);
+			}
+						
+
+    }
+
+}
+/*
+2) declare two numbers and one operator as a character. e.g. '+'
+using switch... case check which operator is declared and accordingly perform the action.
+ */
+
+package workspace;
+import java.util.*;
+
+public class ass_2 {
+
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    
+	    int a=10;
+	    int b=15;
+	    int result=0;
+	    System.out.print("Enter a operator");
+	    char c=sc.next().charAt(0);
+	    
+	    switch(c)
+	    {
+	    case '+':result=a+b;
+	    break;
+	    
+	    case '-':result=a-b;
+	    break;
+	    
+	    case '*':result=a*b;
+	    break;
+	    
+	    case '/':result=a/b;
+	    break;
+	    
+	    default:System.out.println("Invalid operator select");
+	    
+	    }
+	    System.out.println("Result="+result);
+	    
+	    
+	    
+
+	}
+
+}
+
+//3)Display numbers  1 to 10 using loop
+package workspace;
+import java.util.*;
+public class ass_3 {
+
+	public static void main(String[] args) {
+		for(int i=1;i<=10;i++)
+			System.out.println(i);
+
+	}
+
+}
+
+//4)Display numbers from 3 to 30 except number 24  using loop.
+package workspace;
+import java.util.*;
+public class ass_4 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		for(int i=3;i<=30;i++)
+		{
+			if(i==24)
+				continue;
+			System.out.print(" "+i);
+		}
+		
+		
+
+	}
+
+}
+
+//5).Using if…….else if….  Else,  display whether result is  fail, pass, second class , 
+//first class, Distinction etc.  
+
+package workspace;
+import java.util.*;
+public class task_5 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter a number");
+		int a=sc.nextInt();
+		
+		if(a>90)
+			System.out.print("First class");
+		else if(a>65 && a<=90)
+			System.out.print("Second class");
+		else if(a>35 && a<=65)
+			System.out.print("pass");
+		else 
+			System.out.print("fail");
+		
+		
+
+	}
+
+}
+
+//6,13) display all prime numbers between 3 to 30
+
+package workspace;
+import java.util.*;
+public class ass_6 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		for(int i=3;i<=30;i++)
+			{
+			 int c=0;
+			
+			for(int j=2;j<=i;j++)
+			{
+				if(i%j==0)
+				c++;
+			}
+			 if(c==1) {
+			System.out.print(" "+i);
+					
+			}	  
+ }	
+}
+}
+
+
+/*
+ 7,11) using nested for loop display following :
+
+A  a
+A  b
+A  c
+ 
+package workspace;
+import java.util.*;
+public class ass_7 {
+
+	public static void main(String[] args) {
+		char c='a';
+		for(int i=1;i<=3;i++)
+		{ System.out.print('A');
+			for(int j=1;j<=1;j++)
+				System.out.println(" "+c++);
+		}
+		System.out.println();
+
+	}
+
+}
+
+B  a
+B  b
+B  c
+
+
+package workspace;
+import java.util.*;
+public class ass_7 {
+
+	public static void main(String[] args) {
+		char c='a';
+		for(int i=1;i<=3;i++)
+		{ System.out.print('B');
+			for(int j=1;j<=1;j++)
+				System.out.println(" "+c++);
+		}
+		System.out.println();
+
+	}
+
+}
+
+C  a
+C  b
+C  c
+
+*/
+package workspace;
+import java.util.*;
+public class ass_7 {
+
+	public static void main(String[] args) {
+		char c='a';
+		for(int i=1;i<=3;i++)
+		{ System.out.print('C');
+			for(int j=1;j<=1;j++)
+				System.out.println(" "+c++);
+		}
+		System.out.println();
+
+	}
+
+}
+
+
+/*
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+
+
+
+   * * * * 
+    * * * 
+     * * 
+      * 
+
+
+    * 
+   * * 
+  * * * 
+ * * * * 
+  * * * 
+   * * 
+    * 
+ */
+
+
+package workspace;
+import java.util.*;
+public class ass_8 {
+
+	public static void main(String[] args) {
+
+		Scanner sc=new Scanner(System.in);
+		
+		for(int i=0;i<=4;i++)
+		{ for(int s=4;s>=i;s--)
+			System.out.print(" ");
+			for(int j=0;j<=i;j++)
+				System.out.print(" *");
+			System.out.println();
+		}
+	}
+
+}
+package workspace;
+import java.util.*;
+public class ass_8 {
+
+	public static void main(String[] args) {
+
+	Scanner sc=new Scanner(System.in);
+   for(int i=0;i<=4;i++)
+   { for(int s=i;s>=0;s--)
+	  System.out.print(" ");
+	   for(int j=4;j>=i;j--)
+	   System.out.print(" *");
+	   System.out.println();
+	}
+			
+				
+
+}
+}
+
+
+package workspace;
+import java.util.*;
+public class ass_8 {
+
+	public static void main(String[] args) {
+
+		Scanner sc=new Scanner(System.in);
+		
+		for(int i=0;i<=3;i++)
+		{ for(int s=3;s>i;s--)
+			System.out.print(" ");
+			for(int j=0;j<=i;j++)
+				System.out.print(" *");
+			System.out.println();
+		}
+		
+		for(int i=0;i<=3;i++)
+		{ for(int s=i;s>=0;s--)
+			System.out.print(" ");
+			for(int j=3;j>i;j--)
+			System.out.print(" *");
+			System.out.println();
+			}
+					
+		}
+	}
+
+
