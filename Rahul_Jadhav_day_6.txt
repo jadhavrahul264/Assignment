@@ -1,0 +1,374 @@
+Name_Rahul_Jadhav
+PRN_063
+
+Q.1)
+
+package day6;
+
+
+interface MouseHandler
+{
+	void mouseClicked();
+	void mousePressed();
+	void mouseReleased();
+}
+interface WindowHandler
+{
+	void windowClosing();
+	void windowClosed();
+}
+
+class WindowGUIApp implements MouseHandler,WindowHandler
+{
+	public void mouseClicked()
+	{
+		System.out.println("Clicked");
+	}
+	public void mousePressed()
+	{
+		System.out.println("Pressed");
+	}
+	public void mouseReleased()
+	{
+		System.out.println("Released");
+	}
+	
+	public void windowClosing()
+	{
+		System.out.println("Window Closing");
+	}
+	public void windowClosed()
+	{
+		System.out.println("Window Closed");
+	}
+	
+}
+
+
+public class ass1
+{
+	public static void main(String[] args) {
+	
+		
+		WindowGUIApp ref=new WindowGUIApp();
+		ref.mouseClicked();
+		ref.mousePressed();
+		ref.mouseReleased();
+		ref.windowClosing();
+		ref.windowClosed();
+		
+	}
+
+}
+
+
+
+/*
+Q.2)on Developer side create the following interface
+	create necessary jar and docs
+*/
+Devloper Code:
+/**
+ * on Developer side create the following interface
+	create necessary jar and docs
+
+ */
+package dev;
+
+/**
+ * @author akshay
+ */
+public interface PersistenceMechanism
+{
+	
+	void writeData(String ref);
+	String readData();
+}
+
+Client Code:
+
+package client;
+import java.util.*;
+import dev.PersistenceMechanism;
+
+class FileSystem implements PersistenceMechanism
+{
+	String ref;
+	public void writeData(String ref)
+	{
+		this.ref=ref;
+		
+		
+	}
+	public String readData()
+	{
+		return ref;
+	}
+}
+
+class DatabaseSystem implements PersistenceMechanism
+{
+	String ref;
+	public void writeData(String ref)
+	{
+		this.ref=ref;
+	}
+	public String readData()
+	{
+		return ref;
+	}
+}
+
+class BigdataSystem implements PersistenceMechanism
+{
+	String ref;
+	public void writeData(String ref)
+	{
+		this.ref=ref;
+	}
+	public String readData()
+	{
+		return ref;
+	}
+}
+
+
+public class ass2 {
+
+	
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		PersistenceMechanism arr[]=new PersistenceMechanism[3];
+		
+		
+		arr[0]=new FileSystem();
+		arr[1]=new DatabaseSystem();
+		arr[2]=new BigdataSystem();
+		
+		for(int i=0;i<arr.length;i++)
+		{       
+
+			String m=sc.nextLine();
+			arr[i].writeData(m);
+			
+			
+		}
+		
+		for(int j=0;j<arr.length;j++)
+		{
+			System.out.println(arr[j].readData());
+		}
+		
+		
+	}
+
+}
+
+Q.3)
+Devloper Code:
+
+/**
+ * Q.3)on the developer side create following interface:
+	create necessary jar file and documentation
+
+ */
+package dev1;
+
+/**
+ * 
+ */
+public interface Vehicle { 
+    
+    // all are the abstract methods. 
+    void changeGear(int a); 
+    void speedUp(int a); 
+    void applyBrakes(int a); 
+} 
+
+
+Client Code:
+
+package class1;
+
+import dev1.Vehicle;
+
+class FourWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		System.out.println("Fourweheeler Gear changed to a "+a);
+	}
+	public void speedUp(int a)
+	{
+		System.out.println("Fourwheeler Vehicle speedup to a "+a);
+	}
+	public void applyBrakes(int a)
+	{
+		System.out.println("Fourwheeler Vehicle apply break");
+	}
+}
+
+
+class TwoWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		System.out.println("Two wheeler Gear changed to a "+a);
+	}
+	public void speedUp(int a)
+	{
+		System.out.println("Two wheeler Vehicle speedup to a "+a);
+	}
+	public void applyBrakes(int a)
+	{
+		System.out.println("Two wheeler Vehicle apply break");
+	}
+}
+
+public class ass3 {
+
+	
+	public static void main(String[] args) {
+		
+		Vehicle v1=new FourWheeler();
+		v1.changeGear(2);
+		v1.speedUp(70);
+		v1.applyBrakes(0);
+		
+		System.out.println("..................................");
+		
+		Vehicle v2=new TwoWheeler();
+		v1.changeGear(3);
+		v1.speedUp(40);
+		v1.applyBrakes(0);
+	}
+
+}
+
+Q4.
+package day6;
+//4)
+	class Weapon
+	{
+		public void attack()
+		{
+			
+			System.out.println("Attack start");
+		}
+	}
+	class Sword extends Weapon
+	{
+		public void attack()
+		{    super.attack();
+			System.out.println("With Sword");
+		}
+	}
+	class Bomb extends Weapon
+	{
+		public void attack()
+		{ super.attack();
+			System.out.println("With Bomb");
+		}
+	}
+   class Gun extends Weapon
+	{
+	   public void attack()
+		{ super.attack();
+			System.out.println("With Gun");
+		}
+			
+		public void fillBullets()
+		{
+			System.out.println("filling bullets in gun");
+		}
+	}
+
+	class Soldier
+	{
+		public void fight(Weapon ref)
+		{
+			ref.attack();
+			
+		}
+	}
+	public class WeaponDemo
+	{
+		public static void main(String[] args) {
+			
+			//invoke "fight" method of Soldier class
+			Soldier s1=new Soldier();
+			s1.fight(new Gun());
+			s1.fight(new Sword());
+			s1.fight(new Bomb());
+			
+			Weapon ref=new Gun();
+			Gun ref2 =(Gun)ref;
+			
+			ref2.fillBullets();
+
+		}
+	}
+
+
+Q.6
+Devloper side:
+package dev2;
+
+public interface Shape{
+	public void draw();
+}
+
+class Circle implements Shape{
+	
+	public void draw()
+	{
+		System.out.println("Circle draw");
+	}
+}
+
+class Rect implements Shape{
+	
+	public void draw()
+	{
+		System.out.println("Rect draw");
+	}
+}
+
+class Triangle implements Shape{
+	
+	public void draw()
+	{
+		System.out.println("Triangle draw");
+	}
+}
+
+
+Client side:
+import java.awt.Shape;
+
+public class ShapeDemo {
+	public static void perform(Shape ref)
+	{
+		ref.draw();
+	}
+	
+	public static void main(String[] args) {
+		
+		Shape arr[]=new Shape[3];
+		
+		arr[0]=new Triangle();
+		arr[1]=new Rect();
+		arr[2]=new Circle();
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			perform(arr[i]);
+		}
+		
+		
+	}
+
+}
+
+

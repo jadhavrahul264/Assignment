@@ -1,0 +1,208 @@
+/*
+1)	Define 2 classes “First” and “Second” with member variables , 
+member functions and constructors of  your choice. 
+Now define a class “Two” in which define main function . 
+In main function create various instances of First and Second 
+ and call their individual member functions.
+*/
+
+package Day4;
+
+class first
+{
+	int num;
+	
+	first(int num1, int num2){
+		
+		System.out.println(num1+num2);
+	}
+	void disp2()
+	{
+		System.out.println("hoo");
+	}
+	
+}
+
+class second
+{
+	int num = 100;
+	second(int num)
+	{
+		System.out.println("parameterised  constructor");
+	}
+	void disp1() {
+		
+		System.out.println(num);
+	}
+}
+
+public class task1_Two {
+	
+	public static void main(String[] args) {
+		
+		first f1 = new first(100,200);
+		f1.disp2();
+		
+		second s1 = new second(20);
+		s1.disp1();
+		
+	}
+
+}
+
+
+
+*2)Create a class with static and non-static member variables. Define static and 
+* non-static member functions. 
+ * Create instance of this class and call both static and non-static member functions.
+*/
+package Day4;
+
+ public class First {
+	int num1;//ns
+	static int num2;//s
+
+	public static void disply()
+	{
+		System.out.println("static function");
+	}
+	public void disply1()
+	{
+		System.out.println("non static");
+		
+	}
+	
+	public static void main(String[] args) {
+		First ref = new First();
+		ref.disply1();
+		First.disply();
+		System.out.println(ref.num1);
+		System.out.println(num2);
+	}
+}
+
+/*3)	Define a class “Check” in which declare member variables using  different 
+ * accessibility modifiers i.e.  <default>, private ,public and protected.   
+ * Define a function “disp”  which should be public.  Define a class “CheckDemo” in 
+ * which you will write “main()” function. Create an instance of  the class “Check” and  
+ * show how many  variables can be accessed directly and how many indirectly.
+*/
+
+package Day4;
+class chek
+{
+	  int num1;
+	  public int num2;
+	  private int num3;
+	  protected int num4;
+	  chek()
+	  {	
+		  num1= 65;
+		  num2= 30;
+		  num3= 45;
+		  num4= 30;
+	  }
+	  public void disp()
+	  {
+		  System.out.println(num1+","+num2+","+num3+","+num4);
+		  
+	  }
+}
+class second{
+		  public static void main(String[] arg){
+			  chek c= new chek();
+			  c.disp();
+			  int one= c.num1;
+			  int two=c.num2;
+			  int four=c.num4;
+			  System.out.println(one+","+two+" "+four);
+			  
+  }
+		  
+}
+
+
+Q 4 Show the example of single level inheritance with constructor invocation
+
+class parent
+{
+	void bike()
+	{
+	System.out.println("hero");
+	
+	}
+}
+class child extends parent
+{
+	void cycle()
+	{
+		System.out.println("Atlas");
+	}
+}
+
+
+public class tasks4{
+	public static void main(String []arg) {
+		child c= new child();
+		c.bike();
+		c.cycle();
+		
+	}
+}
+
+
+
+
+
+/*5)Show the example of multi-level inheritance with constructor invocation.
+*/
+
+class Add
+{
+	public void add(int a, int b)
+	{
+		System.out.println("Add is"+(a+b));
+	}
+	
+}
+class Sub extends Add
+{
+	public void sub(int a, int b)
+	{
+		System.out.println("sub is"+(a-b));
+	}
+}
+class multi extends Sub
+{
+	public void Multi(int a, int b)
+	{
+		System.out.println("multi is"+(a*b));
+	}
+}
+class div extends multi
+{
+	public void Div(int a, int b)
+	{
+		System.out.println("Div is"+(a/b));
+	}
+	public void callallmethod()
+	{
+		add(10,20);
+		sub(20,10);
+		Multi(10,20);
+		Div(24,4);
+		
+		
+	}
+}
+
+public class tasks4{
+	public static void main(String[] arg )
+	{
+		div d= new div();
+		d.callallmethod();
+		
+	}
+	
+}
+
