@@ -1,0 +1,290 @@
+[Q2]
+package Assign_9;
+/*Define a class Sample with member variable “char ch” and a parameterized constructor.
+ *  Create some instances(at least 2) of this class by passing any alphabet.  Now achieve
+ *   following tasks:*/
+ class sample{
+	 char ch;
+	 sample(char s){
+		 this.ch=s;
+	 }
+	 public String toString() {
+		 return "ch= ["+ch+"]";
+	 }
+	 public boolean equals(sample ref) {
+		 if(this.ch==ref.ch) {
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	 }
+	 public int hashCode() {
+		 return ch;
+	 }
+	 
+ }
+public class Assign01 {
+
+	public static void main(String[] args) {
+		sample s1 =new sample('A');
+		sample s2 = new sample('A');
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s1.equals(s2));
+		System.out.println(s1.hashCode());
+		System.out.println(s2.hashCode());
+	}
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+[Q3]
+package Assign_9;
+/*
+create 4 classes A,B,C,D with member functions Afun(),Bfun(),Cfun() and Dfun() respectively.
+now define "Demo" class with main function. Inside main function create array of Object class
+which will store instances of above mentioned classes. Traverse through this array and call "Cfun()" 
+of class C only.
+*/
+class A{
+	void Afun(){
+		System.out.println("Inside A");
+	}
+}
+class B{
+	void Bfun(){
+		System.out.println("Inside B");
+	}
+}
+class C{
+	void Cfun(){
+		System.out.println("Inside C");
+	}
+}
+class D{
+	void Bfun(){
+		System.out.println("Inside c");
+	}
+	
+}
+public class Demo {
+
+	public static void main(String[] args) {
+		Object ob[] = new Object[4];
+		ob[0]=new A();
+		ob[1]=new B();
+		ob[2]=new C();
+		ob[3]= new D();
+		
+		for(int i=0;i<ob.length;i++) {
+			if(ob[i] instanceof C) {
+			C ref1=(C)ob[i];
+			ref1.Cfun();
+			}
+		}
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+[Q4]
+package Assign_9;
+/*create a parent class "Artist" with a member function "void perform()".
+now derive following child classes from "Artist"
+	Actor,Singer and Musician and override "perform" in these classes to write the specific task.
+inside "Actor" class define one more method
+	void changeGateUp()
+	{
+		S.o.p("as per the role demands");
+	}
+
+now create a Demo class with main function.
+inside main function create array of "Artist" with size 3.
+store instances of the above child classes in it.
+Now traverse through the array and invoke "perform" of each child class. In addition to this wherever "Actor" object is there inside the array , also perform "changeGateUp()" method.
+*/
+class Actor extends Artist{
+	void perform(){
+		System.out.println("Actor performs");
+	}
+	void changeGateUp()
+	{
+		System.out.println("as per the role demands");
+	}
+}
+class Artist{
+	void perform(){
+		System.out.println("Artist performs");
+	}
+}
+class Singer extends Artist{
+void perform(){
+		System.out.println("Singer perform");
+	}
+}
+class Musician extends Artist{
+void perform(){
+	System.out.println("Singer perform");
+	}
+}
+public class Demo1 {
+
+	public static void main(String[] args) {
+		Artist arr[]= new Artist[3];
+		arr[0]=new Artist();
+		arr[1]=new Actor();
+		arr[2]=new Singer();
+		
+		for(int i=0;i<arr.length;i++) {
+			arr[i].perform();
+			if(arr[i] instanceof Actor) {
+			Actor ref = (Actor)arr[i];
+			ref.changeGateUp();
+			}
+			
+		}
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+[Q5]
+----developer side----
+package devpro11;
+
+public class VotingNotAllowedException extends Exception {
+	VotingNotAllowedException(String mess){
+		super(mess);
+	}
+}
+package devpro11;
+/*define a class "Person" with a instance member "private String name" and "private int age"
+define parameterized constructor and toString() method also.
+In the parameterized constructor check the age passed while instantiating the class. if the age is less than 18 , constructor should raise "VotingNotAllowedException"
+	[ it should not handle the exception]
+
+	create jar file and documentation
+	*/ 
+public class Person{
+	private String name;
+	private int age;
+	public Person(String n,int a)throws VotingNotAllowedException{
+		this.name=name;
+		this.age=age;
+		if(age<18) {
+			throw new VotingNotAllowedException("Age is less than 18");
+		}
+		else {
+			System.out.println("Age valid");
+		}
+	}
+	public String toString() {
+		return "name ="+name+"  age="+age;
+	}
+}
+---client side----------
+package clientpro;
+import devpro11.*;
+import java.util.Scanner;
+public class demo {
+s
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter age: ");
+		int age=sc.nextInt();
+		try {
+		Person ref = new Person("raj",age);
+		System.out.println(ref);
+		}
+		scatch(VotingNotAllowedException ae) {
+			System.out.println(ae);
+		}
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+[Q6]
+package Assign_9;
+import java.lang.reflect.Method;
+import java.lang.reflect.Constructor;
+public class Assign_7 {
+	
+	public static void main(String[] args) {
+		Class c=null;
+		try {
+			c=Class.forName(args[0]);
+		}
+		catch(ClassNotFoundException ae) {
+			ae.printStackTrace();
+		}
+		//printing invoked class methods
+		Method methods[] = c.getDeclaredMethods();
+		for(int i=0;i<methods.length;i++) {
+			System.out.println(methods[i]);
+		}
+		Constructor construct[] =c.getConstructors();
+		for(Constructor i:construct) {
+			System.out.println(i);
+		}
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------
+[Q7]
+----client side----
+package devpro13;
+
+public class First {
+	public String toString(){
+		return "["+getClass().getName()+"]";
+	}
+}
+
+package devpro13;
+
+public class Secound {
+	public String toString() {
+		return getClass().getName();
+	}
+}
+
+package devpro13;
+
+public class Third {	
+	public String toString() {
+	return getClass().getName();
+    }
+}
+
+package devpro13;
+
+public class Four {
+	public String toString() {
+		return getClass().getName();
+	}
+}
+
+---developer side---
+package clientpro13;
+import devpro13.*;
+public class Demo {
+	static Object returnObject(Class name) throws InstantiationException, IllegalAccessException {
+		return name.newInstance();
+		
+	}
+	public static void main(String[] args) throws IllegalAccessException {
+		Class c=null;
+		try {
+		c = Class.forName(args[0]);
+		}
+		catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+		Object ref=returnObject(c);
+		System.out.println(ref);
+		}
+		catch(InstantiationException e1){
+			e1.printStackTrace();
+		}
+		catch(IllegalAccessException e2) {
+			e2.printStackTrace();
+		}
+		
+	}
+}
