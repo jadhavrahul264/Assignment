@@ -1,0 +1,118 @@
+//[Q1]
+package pract01;
+/*1) define a functional interface "First" with an abstract method "void disp1()" ,
+ *  default method "void disp2()" and a static method "void disp3()"
+
+inside main function using lambda expression invoke "disp1()" and "disp2()" methods.
+also invoke "disp3()" method inside main.
+*/
+interface First{
+	void disp();
+	default void display2() {
+		System.out.println("Inside display 2 of first");
+	}
+	static void disp3() {
+		System.out.println("Inside disp3 of first");
+	}
+}
+public class Assign01 {
+
+	public static void main(String[] args) {
+		First ref=()->{System.out.println("new class");};
+		ref.display2();
+		First.disp3();
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+//[Q2]
+package pract01;
+/*
+define a functional interface "Second" with an abstract method "void disp4()".
+define a class Demo with main function.
+inside main function create two implementations of "Second" using lambda expression
+and display their names.
+*/
+
+//functional interface is a method which contain only one obstract method
+interface Secound{
+	void disp4();
+}
+public class Assign02 {
+
+	public static void main(String[] args) {
+		Secound ref = ()->{System.out.println("Inside implementation1 of disp4 method");};
+		Secound ref1 =()->{System.out.println("Inside implementation2 of disp4 method");};
+		ref.disp4();
+		ref1.disp4();
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+//[Q3]
+package pract01;
+/*
+define a functional interface "MyInterface" with an abstract method "void fun()"
+define a class Demo with two functions "static void perform" and main.
+from main function pass lambda expression, collect it in "perform" method and invoke "fun()"
+function.*/
+interface MyInterface{
+	void fun();
+}
+public class Assign03 {
+	static void perform(MyInterface ref) {
+		System.out.println("Inside perform method");
+		ref.fun();
+	}
+	public static void main(String[] args) {
+		MyInterface ref =()->{System.out.println("Inside implementation of fun()");};
+		perform(ref);
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+//[Q4]
+package pract01;
+/*
+4) define a functional interface "Calculator" with an abstract method
+ "int multiply(int a,int b)"
+define a class "CalcDemo" with main method.
+inside main using lambda create an implementation of "Calculator" , invoke 
+"multiply()" method and display its result.
+//inside body of multiply implemented method of interface using lamda  we can write
+	//as many lines as we want*/
+interface Calculator{
+	int multiply(int a,int b);
+}
+public class CalcDemo {
+	
+	public static void main(String[] args) {
+		Calculator ref =(int a,int b)->{return a*b;};
+		System.out.println(ref.multiply(10,20));
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+//[Q5]
+package pract01;
+/*
+define a class "Display" with "void disp" method. inside this method display values from 1 to 10.
+create an implementation of "Runnable" using lambda expression which will invoke "disp()" method of "Display" class.
+create 2 threads and pass above created "Runnable" implementation to these threads.
+make sure while one thread is executing other thread will not interfere.
+*/
+class display{
+	 synchronized void disp() {
+		 System.out.println(Thread.currentThread().getName());
+		for(int i=1;i<=10;i++) {
+			System.out.println(i);
+		}
+	}
+}
+public class Assign04 {
+
+	public static void main(String[] args) {
+		display d= new display();
+		Runnable ref =()->{d.disp();};
+		Thread t1 = new Thread(ref,"First");
+		Thread t2 = new Thread(ref,"Secound");
+		t1.start();
+		t2.start();
+	}
+}
