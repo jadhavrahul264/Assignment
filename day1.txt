@@ -1,0 +1,41 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        int pos=0,neg=0,zero=0;
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        for(int iter:arr){
+            if(iter>0){
+                pos++;
+            }
+            else if(iter<0 ){
+                neg++;
+            }
+            else if(iter==0){
+                zero++;
+            }
+            else{
+                System.out.println("Invalid number");
+            }
+        }
+        float p1=(float)pos/size;
+        float n1=(float)neg/size;
+        float z1=(float)zero/size;
+        String fv = String.format("%.6f", p1);
+         String fv1 = String.format("%.6f", n1);
+        String fv2 = String.format("%.6f", z1);
+        System.out.println(fv);
+        System.out.println(fv1);
+        System.out.println(fv2);  
+    }
+}
